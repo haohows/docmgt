@@ -1,14 +1,12 @@
 <template>
   <div v-if="data.length > 0">
-    <div class="title">圖檔資料庫</div>
+    <div class="title">標記檔資料庫</div>
     <hr />
     <div class="list-wrap">
       <div v-for="(item, index) in data" :key="index">
-        <div class="imgcard">
-          <div
-            class="imgItem"
-            :style="`background-image: url('/image/${item.file}')`"
-          ></div>
+        <div class="markcard">
+          <div class="markItem">AR</div>
+          <div class="markText">{{ item.text }}</div>
           <button class="btn" @click="copyUrl(item.file)">取得連結</button>
         </div>
       </div>
@@ -17,7 +15,7 @@
 </template>
 
 <script setup>
-const data = getImgDoc();
+const data = getMarkDoc();
 const copyUrl = (url) => {
   let domain = location.origin;
   let textarea = document.createElement("textarea");
@@ -38,22 +36,36 @@ const copyUrl = (url) => {
 
 <style lang="scss">
 .list-wrap {
-  margin: 20px auto 250px;
+  margin: 0px auto 50px;
   width: 80vw;
   // max-width: 1000px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
-.imgItem {
+.markItem {
   width: 140px;
-  height: 140px;
-  background-image: url();
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
+  height: 60px;
+  font-size: 50px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.imgcard {
+.markText {
+  width: 140px;
+  color: white;
+  font-size: 14px;
+  margin: 5px;
+  text-align: center;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* 限制在两行文本 */
+  overflow: hidden;
+  line-height: 1.2em;
+  height: 2.4em; /* line-height * n行，这里是2行 */
+}
+.markcard {
   margin: 5px;
   display: flex;
   justify-content: center;
@@ -62,7 +74,7 @@ const copyUrl = (url) => {
   border: 1px solid black;
   padding: 10px;
   border-radius: 8px;
-  background: #eee;
+  background: #3a3a3a;
 }
 .btn {
   margin-top: 6px;
