@@ -15,11 +15,12 @@
 </template>
 
 <script setup>
+import { computed } from "vue";
 const data = getMarkDoc();
 const copyUrl = (url) => {
   let domain = location.origin;
   let textarea = document.createElement("textarea");
-  textarea.value = `${domain}/image/${url}`;
+  textarea.value = `${domain}/mark/${url}`;
   document.body.appendChild(textarea);
   textarea.select();
   textarea.setSelectionRange(0, 99999); // 確保兼容性

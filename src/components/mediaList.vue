@@ -7,7 +7,7 @@
         <div class="imgcard">
           <div
             class="imgItem"
-            :style="`background-image: url('/image/${item.file}')`"
+            :style="`background-image: url('${baseUrl}${item.file}')`"
           ></div>
           <button class="btn" @click="copyUrl(item.file)">取得連結</button>
         </div>
@@ -17,11 +17,13 @@
 </template>
 
 <script setup>
+import { computed } from "vue";
 const data = getImgDoc();
 const copyUrl = (url) => {
-  let domain = location.origin;
   let textarea = document.createElement("textarea");
-  textarea.value = `${domain}/image/${url}`;
+  let origin = location.origin;
+  let pathname = location.pathname;
+  textarea.value = `${origin}${pathname}image/${url}`;
   document.body.appendChild(textarea);
   textarea.select();
   textarea.setSelectionRange(0, 99999); // 確保兼容性
@@ -34,6 +36,12 @@ const copyUrl = (url) => {
   // 可選：給用戶一些反饋
   alert("網址已複製");
 };
+const baseUrl = computed(() => {
+  let origin = location.origin;
+  let pathname = location.pathname;
+  let base = `${origin}${pathname}image/`;
+  return base;
+});
 </script>
 
 <style lang="scss">
