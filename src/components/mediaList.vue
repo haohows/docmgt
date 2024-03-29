@@ -1,6 +1,6 @@
 <template>
   <div v-if="data.length > 0">
-    <div class="title">圖檔資料庫</div>
+    <div class="title">圖像檔列表</div>
     <hr />
     <div class="list-wrap">
       <div v-for="(item, index) in data" :key="index">

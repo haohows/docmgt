@@ -1,19 +1,5 @@
 const imgdata = [
-    {
-
-        file: "pkc.jpg",
-
-    },
-    {
-
-        file: "duck.jpg",
-
-    },
-    {
-
-        file: "cat.jpg",
-
-    },
+    { file: "pkc.jpg" },
 ]
 
 window.getImgDoc = () => {

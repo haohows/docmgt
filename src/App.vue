@@ -30,7 +30,7 @@ const reloadWithoutCache = () => {
   text-align: center;
   font-size: 34px;
 }
-.reloadBtn{
+.reloadBtn {
   position: fixed;
   top: 20px;
   right: 20px;
