@@ -17,6 +17,8 @@
 </template>
 
 <script setup>
+import Swal from "sweetalert2";
+
 import { computed } from "vue";
 const data = getImgDoc();
 const copyUrl = (url) => {
@@ -34,7 +36,13 @@ const copyUrl = (url) => {
   document.body.removeChild(textarea);
 
   // 可選：給用戶一些反饋
-  alert("網址已複製");
+  Swal.fire({
+    icon: "success", //error\warning\info\question
+    title: "網址已複製",
+    text: textarea.value,
+    timer: 1000,
+    showConfirmButton: false,
+  });
 };
 const baseUrl = computed(() => {
   let origin = location.origin;
